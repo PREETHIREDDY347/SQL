@@ -10,6 +10,7 @@ insert into Salesman values(5006,'Mc Lyon','Paris',0.14)
 insert into Salesman values(5007,'Paul Adam','Rome',0.13)
 insert into Salesman values(5003,'Lauson Hen','San Jose',0.12)
 select *from Salesman
+select city,count(salesman_id) as numberofsalespeople from Salesman group by city
 select count(salesman_id) as numberofsalespeople from Salesman
 select name,commission from Salesman
 drop  table orders
@@ -31,6 +32,9 @@ insert into orders values('2012-06-27',5002,70012,250.45,3008)
 insert into orders values('2012-08-17',5007,70011,75.29,3003)
 insert into orders values('2012-04-25',5001,70013,3045.6,3002)
 select *from orders
+select salesman_id,max(purch_amt) as maximumpurchaseamount from orders group by salesman_id having ((salesman_id>=5003) and (salesman_id<=5008)) 
+select salesman_id,count(ord_date) as nooforders from orders where ord_date='2012-08-17' group by salesman_id
+select ord_date,salesman_id,count(ord_no)as numberoforders from orders group by ord_date,salesman_id
 select avg(purch_amt) as averagepurchaseamount,max(purch_amt)as purchaseamount from orders
 select customer_id,max(purch_amt) as maximumpurchaseamount from orders group by customer_id
 select ord_date,salesman_id,ord_no,purch_amt from orders
