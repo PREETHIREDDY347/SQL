@@ -57,9 +57,9 @@ select ord_no,ord_date,purch_amt from orders where salesman_id=5001
 select count(customer_id)as numberofcustomers from Customer 
 select * from Customer
 select city,max(grade) as maximumgrade from Customer where city='Paris' group by city having max(grade)>50 order by maximumgrade desc
+-->write query to find salesperson and customer who belong to same city,return salesman,cust_name and city
+SELECT salesman.name as Salesman, customer.cust_name, customer.city from  Salesman,Customer where salesman.city=customer.city
 
 
-
-
-
-
+-->write query to find those orders whose order amount exists between 500 and 2000.return ord_no.purch_amt,cust_name,city
+Select ord_no,purch_amt from orders where purch_amt>500 and purch_amt<2000 
